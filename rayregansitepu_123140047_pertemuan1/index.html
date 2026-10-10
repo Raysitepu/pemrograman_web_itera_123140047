@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kasir kantin kampus dengan keranjang tersimpan, diskon otomatis, dan kalkulator kembalian.">
+  <title>Kantin Kita — Kasir Mini POS</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">K.</span><span>Kantin Kita<small>KASIR KAMPUS</small></span></a>
+    <div class="sidebar-label">RUANG KERJA</div>
+    <a class="nav-item active" href="index.html" aria-current="page"><span aria-hidden="true">▦</span> Kasir <span class="nav-dot"></span></a>
+    <div class="sidebar-note"><span class="note-icon" aria-hidden="true">↻</span><strong>Keranjang tersimpan</strong><p>Lanjutkan belanja meski halaman dimuat ulang.</p></div>
+    <div class="sidebar-footer">MINI POS <span>v1.0</span><small>Praktikum PAW · Pertemuan 01</small></div>
+  </aside>
+  <main>
+    <header class="topbar"><div><span class="breadcrumb">Ruang kerja /</span> Kasir</div><span class="local-badge"><span></span> Penyimpanan lokal</span></header>
+    <div class="workspace">
+      <div class="page-heading"><div><p class="eyebrow">TRANSAKSI HARI INI</p><h1>Siap melayani.</h1><p>Tambahkan barang, cek belanja, lalu hitung kembalian.</p></div><button type="button" id="reset-button" class="button secondary"><span aria-hidden="true">↻</span> Transaksi baru</button></div>
+      <div id="storage-warning" class="storage-warning" role="status" hidden></div>
+      <div class="overview" aria-label="Ringkasan keranjang">
+        <div class="metric"><span class="metric-icon" aria-hidden="true">▤</span><div><span>Jenis barang</span><strong id="item-count">0</strong></div></div>
+        <div class="metric"><span class="metric-icon" aria-hidden="true">▦</span><div><span>Total unit</span><strong id="unit-count">0</strong></div></div>
+        <div class="metric"><span class="metric-icon" aria-hidden="true">Rp</span><div><span>Total belanja</span><strong id="overview-total">Rp0</strong></div></div>
+      </div>
+      <div class="cashier-layout">
+        <section class="card input-card" aria-labelledby="input-heading">
+          <div class="card-heading"><span class="step">01</span><div><h2 id="input-heading">Tambah barang</h2><p>Masukkan detail pesanan.</p></div></div>
+          <form id="item-form" novalidate>
+            <div class="field"><label for="item-name">Nama barang</label><input id="item-name" name="name" type="text" placeholder="Contoh: Air Mineral" required minlength="3" autocomplete="off" aria-describedby="name-error"><p id="name-error" class="field-error" aria-live="polite"></p></div>
+            <div class="field"><label for="item-price">Harga satuan</label><div class="input-prefix"><span>Rp</span><input id="item-price" name="price" type="number" placeholder="5000" min="500" step="any" required aria-describedby="price-hint price-error"></div><p id="price-hint" class="hint">Minimal Rp500 per barang.</p><p id="price-error" class="field-error" aria-live="polite"></p></div>
+            <div class="field"><label for="item-qty">Jumlah / Qty</label><input id="item-qty" name="quantity" type="number" placeholder="1" min="1" step="1" required aria-describedby="qty-error"><p id="qty-error" class="field-error" aria-live="polite"></p></div>
+            <div class="subtotal-preview"><span>Subtotal barang</span><strong id="item-preview">Rp0</strong></div>
+            <button type="submit" class="button primary full"><span aria-hidden="true">＋</span> Tambah ke keranjang</button>
+            <p id="form-status" class="form-status" role="status"></p>
+          </form>
+          <div class="discount-note"><span aria-hidden="true">%</span><p><strong>Belanja lebih, hemat lebih.</strong>Diskon 10% otomatis untuk total belanja mulai Rp50.000.</p></div>
+        </section>
+        <div class="right-column">
+          <section class="card cart-card" aria-labelledby="cart-heading">
+            <div class="card-heading cart-heading"><span class="step">02</span><div><h2 id="cart-heading">Keranjang belanja</h2><p>Semua pesanan dalam satu tempat.</p></div><span class="count-badge" id="cart-count">0 barang</span></div>
+            <div class="table-wrap"><table><caption class="sr-only">Daftar barang dalam keranjang belanja</caption><thead><tr><th scope="col">No</th><th scope="col">Nama barang</th><th scope="col" class="numeric">Harga satuan</th><th scope="col" class="numeric">Qty</th><th scope="col" class="numeric">Subtotal</th><th scope="col" class="action-cell">Aksi</th></tr></thead><tbody id="cart-body"></tbody></table></div>
+            <div class="cart-footer"><span id="storage-status"><span aria-hidden="true">✓</span> Keranjang siap digunakan</span><span>Harga dalam Rupiah</span></div>
+          </section>
+          <section class="card payment-card" aria-labelledby="payment-heading">
+            <div class="card-heading"><span class="step">03</span><div><h2 id="payment-heading">Pembayaran</h2><p>Hitung total akhir dan uang kembalian.</p></div></div>
+            <div class="payment-grid">
+              <div class="summary"><div class="summary-row"><span>Total belanja</span><strong id="subtotal-total">Rp0</strong></div><div class="summary-row discount-row"><span>Diskon <span id="discount-badge" class="tiny-badge">0%</span></span><strong id="discount-total">− Rp0</strong></div><p id="discount-status" class="hint">Diskon 10% mulai Rp50.000.</p><div class="grand-total"><span>Total akhir</span><strong id="grand-total">Rp0</strong></div></div>
+              <div class="pay-input"><label for="cash-paid">Uang bayar</label><div class="input-prefix"><span>Rp</span><input id="cash-paid" type="number" min="0" step="any" placeholder="Masukkan uang diterima" aria-describedby="cash-error payment-status" disabled></div><p id="cash-error" class="field-error" aria-live="polite"></p><div id="change-box" class="change-box"><span>Kembalian</span><strong id="change-total">—</strong></div><p id="payment-status" class="payment-status" role="status">Tambahkan barang untuk mulai menghitung pembayaran.</p></div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <footer class="workspace-footer"><span>Kantin Kita · Kasir & keranjang belanja sederhana</span><span>JavaScript dasar / Mini POS</span></footer>
+    </div>
+  </main>
+  <dialog id="reset-dialog" aria-labelledby="reset-title"><form method="dialog"><span class="dialog-icon" aria-hidden="true">↻</span><h2 id="reset-title">Mulai transaksi baru?</h2><p>Semua barang di keranjang dan uang bayar akan dikosongkan.</p><div class="dialog-actions"><button class="button secondary" value="cancel">Batal</button><button class="button primary" value="confirm">Ya, kosongkan</button></div></form></dialog>
+</body>
+</html>
