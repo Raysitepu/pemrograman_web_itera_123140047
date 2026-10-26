@@ -1,0 +1,60 @@
+
+> ruang-baca-pertemuan3@1.0.0 test:coverage
+> vitest run --coverage --reporter=verbose
+
+
+ RUN  v5.0.5 D:/Paw 3/NAMA_NIM_pertemuan3
+      Coverage enabled with v8
+
+ ✓ src/test/hooks.test.jsx > Custom hooks dan penyimpanan > useBookStats menghitung status dan penulis unik 12ms
+ ✓ src/test/hooks.test.jsx > Custom hooks dan penyimpanan > statistik koleksi kosong tidak menghasilkan angka tidak valid 1ms
+ ✓ src/test/hooks.test.jsx > Custom hooks dan penyimpanan > useLocalStorage menerima pembaruan fungsional dan menyimpannya 14ms
+ ✓ src/test/hooks.test.jsx > Custom hooks dan penyimpanan > kegagalan menulis penyimpanan memberi feedback tanpa kehilangan state 15ms
+ ✓ src/test/hooks.test.jsx > Custom hooks dan penyimpanan > data tersimpan dengan struktur salah ditolak dengan aman 1ms
+ ✓ src/test/App.test.jsx > Aplikasi manajemen buku > menampilkan keadaan kosong dan memuat buku contoh atas permintaan pengguna 213ms
+ ✓ src/test/App.test.jsx > Aplikasi manajemen buku > menolak judul dan penulis kosong dengan pesan validasi dan fokus 57ms
+ ✓ src/test/App.test.jsx > Aplikasi manajemen buku > menolak input hanya spasi 259ms
+ ✓ src/test/App.test.jsx > Aplikasi manajemen buku > menambah buku, merapikan spasi, kembali ke koleksi dan menyimpan data 760ms
+ ✓ src/test/App.test.jsx > Aplikasi manajemen buku > mengedit judul dan status tanpa menggandakan buku 776ms
+ ✓ src/test/App.test.jsx > Aplikasi manajemen buku > membatalkan penghapusan, lalu menghapus hanya setelah konfirmasi 699ms
+ ✓ src/test/App.test.jsx > Aplikasi manajemen buku > Escape menutup konfirmasi dan mengembalikan fokus ke tombol hapus 303ms
+ ✓ src/test/App.test.jsx > Aplikasi manajemen buku > memfilter berdasarkan status dan menggabungkannya dengan pencarian penulis 855ms
+ ✓ src/test/App.test.jsx > Aplikasi manajemen buku > mencari berdasarkan sebagian judul tanpa membedakan huruf besar 249ms
+ ✓ src/test/App.test.jsx > Aplikasi manajemen buku > mempertahankan koleksi setelah aplikasi dipasang ulang 178ms
+ ✓ src/test/App.test.jsx > Aplikasi manajemen buku > navigasi statistik menampilkan jumlah dan persentase sesuai data 310ms
+ ✓ src/test/App.test.jsx > Aplikasi manajemen buku > menangani tautan edit buku yang sudah tidak ada 45ms
+ ✓ src/test/App.test.jsx > Aplikasi manajemen buku > menangani rute yang tidak dikenal 48ms
+ ✓ src/test/App.test.jsx > Aplikasi manajemen buku > data JSON rusak tidak menyebabkan crash atau ditimpa sebelum pemulihan 153ms
+
+ Test Files  2 passed (2)
+      Tests  19 passed (19)
+   Start at  17:23:10
+   Duration  6.80s (tests 69%, environment 18%, import 6%, setup 4%, transform 2%, worker 1%)
+
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |    89.6 |    81.67 |   95.45 |   95.42 |                   
+ src               |   85.71 |      100 |   66.66 |      90 |                   
+  App.jsx          |   85.71 |      100 |   66.66 |      90 | 26                
+ src/components    |    86.3 |    77.96 |     100 |   92.85 |                   
+  BookForm.jsx     |   95.83 |    90.47 |     100 |     100 | 34-35             
+  ...irmDialog.jsx |      64 |    28.57 |     100 |      75 | 15-18             
+  Icon.jsx         |     100 |       75 |     100 |     100 | 17                
+ src/context       |   87.09 |    71.42 |     100 |     100 |                   
+  BookContext.jsx  |   87.09 |    71.42 |     100 |     100 | 14-15,33-44       
+ src/hooks         |   94.11 |    85.71 |   88.88 |    93.1 |                   
+  ...calStorage.js |   92.85 |    85.71 |      80 |      92 | 4,36              
+ src/lib           |      85 |    86.36 |     100 |     100 |                   
+  books.js         |      85 |    86.36 |     100 |     100 | 29,31-32          
+ src/pages         |     100 |    84.21 |     100 |     100 |                   
+  Stats.jsx        |     100 |       50 |     100 |     100 | 14-17             
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 89.6% ( 181/202 )
+Branches     : 81.67% ( 107/131 )
+Functions    : 95.45% ( 63/66 )
+Lines        : 95.42% ( 146/153 )
+================================================================================

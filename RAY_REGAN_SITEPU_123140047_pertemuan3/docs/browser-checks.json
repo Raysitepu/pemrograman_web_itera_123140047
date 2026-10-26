@@ -1,0 +1,26 @@
+{
+  "result": "PASS",
+  "browser": "156.0.4314.42",
+  "desktop": "1440x1080",
+  "mobile": "390x844",
+  "checks": [
+    "empty state",
+    "opt-in example books",
+    "required input validation",
+    "add book",
+    "persistence after reload",
+    "edit book",
+    "confirmed deletion",
+    "statistics navigation",
+    "no horizontal overflow on desktop/mobile",
+    "no JavaScript errors"
+  ],
+  "screenshots": [
+    "01-koleksi-kosong.png",
+    "02-koleksi-desktop.png",
+    "03-validasi-form.png",
+    "04-statistik.png",
+    "05-koleksi-mobile.png",
+    "06-form-mobile.png"
+  ]
+}
