@@ -129,6 +129,6 @@ yang salah. Percobaan berat 100 kg dan tinggi 1.65 m menghasilkan BMI
 ## Format pengumpulan
 
 - Nama repositori: `pemrograman_web_itera_123140047`.
-- Nama folder tugas: `Ray_Regan_Sitepu_123140047_pertemuan4`.
+- Nama folder tugas: `rayregansitepu_123140047_pertemuan4`.
 - Sertakan kode, README, dan dokumentasi hasil eksekusi.
 - `.gitignore` mengecualikan virtual environment dan cache Python.
